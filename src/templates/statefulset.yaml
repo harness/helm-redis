@@ -66,7 +66,7 @@ spec:
           mountPath: /data
       containers:
       - name: redis
-        image: {{ .Values.redis.image.repository }}:{{ .Values.redis.image.tag }}
+        image: {{ include "redis.redisImage" . }}
         imagePullPolicy: {{ .Values.redis.image.pullPolicy }}
         command:
         - redis-server
@@ -86,7 +86,7 @@ spec:
         - mountPath: /data
           name: data
       - name: sentinel
-        image: {{ .Values.sentinel.image.repository }}:{{ .Values.sentinel.image.tag }}
+        image: {{ include "redis.sentinelImage" . }}
         imagePullPolicy: {{ .Values.sentinel.image.pullPolicy }}
         command:
           - redis-sentinel
