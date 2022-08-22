@@ -65,20 +65,12 @@ Create the name of the service account to use
 Create the name of the redis image to use
 */}}
 {{- define "redis.redisImage" -}}
-{{- if .Values.global.imageRegistry -}}
-{{- printf "%s/%s:%s" .Values.global.imageRegistry ((splitList "/" .Values.redis.image.repository) | last) .Values.redis.image.tag -}}
-{{- else -}}
-{{- printf "%s:%s" .Values.redis.image.repository .Values.redis.image.tag -}}
-{{- end -}}
+{{ include "common.images.image" (dict "imageRoot" .Values.redis.image "global" .Values.global) }}
 {{- end }}
 
 {{/*
 Create the name of the sentinet image to use
 */}}
 {{- define "redis.sentinelImage" -}}
-{{- if .Values.global.imageRegistry -}}
-{{- printf "%s/%s:%s" .Values.global.imageRegistry ((splitList "/" .Values.sentinel.image.repository) | last) .Values.sentinel.image.tag -}}
-{{- else -}}
-{{- printf "%s:%s" .Values.sentinel.image.repository .Values.sentinel.image.tag -}}
-{{- end -}}
+{{ include "common.images.image" (dict "imageRoot" .Values.sentinel.image "global" .Values.global) }}
 {{- end }}
