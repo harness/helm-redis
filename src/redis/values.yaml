@@ -14,9 +14,11 @@ redis:
       cpu: 0.1
       memory: 200Mi
   image:
+    registry: docker.io
     tag: 6.2.5-alpine
     repository: harness/redis
     pullPolicy: IfNotPresent
+    digest: ""
 
 sentinel:
   resources:
@@ -27,16 +29,20 @@ sentinel:
       cpu: 100m
       memory: 200Mi
   image:
+    registry: docker.io
     tag: 6.2.5-alpine
     repository: harness/redis
     pullPolicy: IfNotPresent
+    digest: ""
 
 initContainers:
   config_init:
     image:
+      registry: docker.io
       tag: 6.2.5-alpine
       repository: harness/redis
       pullPolicy: IfNotPresent
+      digest: ""
 
 nameOverride: ""
 fullnameOverride: ""
@@ -59,7 +65,7 @@ podSecurityContext:
   runAsNonRoot: true
   runAsUser: 1000
 
-securityContext: 
+securityContext:
   runAsUser: 65534
   runAsNonRoot: true
   # capabilities:
@@ -84,4 +90,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-

@@ -38,10 +38,10 @@ spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
-      {{- end }}  
+      {{- end }}
       initContainers:
       - name: config-init
-        image: {{ .Values.initContainers.config_init.image.repository}}:{{ .Values.initContainers.config_init.image.tag}}
+        image: {{ include "common.images.image" (dict "imageRoot" .Values.initContainers.config_init.image "global" .Values.global) }}
         imagePullPolicy: {{ .Values.initContainers.config_init.image.pullPolicy}}
         resources:
           {}
@@ -107,7 +107,7 @@ spec:
       volumes:
       - name: config
         configMap:
-          name: redis-sentinel-harness-configmap     
+          name: redis-sentinel-harness-configmap
       affinity:
         {{- with .Values.affinity }}
         {{- toYaml . | nindent 8 }}

@@ -4,7 +4,7 @@ metadata:
   name: redis-sentinel-harness
   namespace: {{ .Release.Namespace }}
   labels:
-    app: redis-sentinel 
+    app: redis-sentinel
     {{- include "redis.labels" . | nindent 4 }}
   annotations:
 spec:
@@ -58,7 +58,7 @@ metadata:
   name: redis-sentinel-harness-announce-1
   namespace: {{ .Release.Namespace }}
   labels:
-    app: redis-sentinel 
+    app: redis-sentinel
     {{- include "redis.labels" . | nindent 4 }}
   annotations:
     service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
@@ -86,7 +86,7 @@ metadata:
   name: redis-sentinel-harness-announce-2
   namespace: {{ .Release.Namespace }}
   labels:
-    app: redis-sentinel 
+    app: redis-sentinel
     {{- include "redis.labels" . | nindent 4 }}
   annotations:
     service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
