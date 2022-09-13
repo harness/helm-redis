@@ -57,7 +57,7 @@ A Helm chart for Kubernetes
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"harness-default"` |  |
 | tolerations | list | `[]` |  |
-| useAntiAffinity | bool | `true` |  |
+| useAntiAffinity | bool | `true` | Enable Hard pod anti-affinity during scheduling |
 | volumeClaimTemplate.resources.requests.storage | string | `"10Gi"` |  |
 
 ----------------------------------------------
