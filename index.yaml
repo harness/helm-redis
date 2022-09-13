@@ -3,6 +3,20 @@ entries:
   redis:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-09-13T12:56:26.370491929Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 8e0be4d2747b8c504b729a555837f16a4e03627b71b3a6778d5e067c122c4e39
+    name: redis
+    type: application
+    urls:
+    - https://github.com/harness/helm-redis/releases/download/redis-0.2.2/redis-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-09-01T12:42:30.794707299Z"
     dependencies:
     - name: harness-common
@@ -32,4 +46,4 @@ entries:
     urls:
     - https://github.com/harness/helm-redis/releases/download/redis-0.2.0/redis-0.2.0.tgz
     version: 0.2.0
-generated: "2022-09-01T12:42:30.794723399Z"
+generated: "2022-09-13T12:56:26.37051213Z"
