@@ -5,6 +5,9 @@ global:
   storageClassName: ""
 replicaCount: 3
 
+#--- Enable Hard pod anti-affinity during scheduling
+useAntiAffinity: true
+
 redis:
   resources:
     limits:
