@@ -74,3 +74,8 @@ Create the name of the sentinet image to use
 {{- define "redis.sentinelImage" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.sentinel.image "global" .Values.global) }}
 {{- end }}
+
+
+{{- define "redis.pullSecrets" -}}
+{{ include "common.images.pullSecrets" (dict "images" (list .Values.redis.image .Values.sentinel.image .Values.initContainers.config_init.image) "global" .Values.global ) }}
+{{- end -}}
