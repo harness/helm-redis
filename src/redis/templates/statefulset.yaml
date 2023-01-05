@@ -35,10 +35,7 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       serviceAccountName: {{ include "redis.serviceAccountName" . }}
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      {{- include "redis.pullSecrets" . | nindent 6 }}
       initContainers:
       - name: config-init
         image: {{ include "common.images.image" (dict "imageRoot" .Values.initContainers.config_init.image "global" .Values.global) }}
