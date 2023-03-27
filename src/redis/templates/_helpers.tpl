@@ -74,3 +74,10 @@ Create the name of the sentinet image to use
 {{- define "redis.sentinelImage" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.sentinel.image "global" .Values.global) }}
 {{- end }}
+
+{{/*
+Create the name of the sentinet image to use
+*/}}
+{{- define "redis.metricsImage" -}}
+{{ include "common.images.image" (dict "imageRoot" .Values.metrics.image "global" .Values.global) }}
+{{- end }}

@@ -65,14 +65,6 @@ spec:
         - name: data
           mountPath: /data
       containers:
-      - name: redis-exporter
-        image: oliver006/redis_exporter
-        ports:
-        - containerPort: 9121
-          name: exporter-port
-        volumeMounts:
-        - name: data
-          mountPath: /data
       - name: redis
         image: {{ include "redis.redisImage" . }}
         imagePullPolicy: {{ .Values.redis.image.pullPolicy }}
@@ -112,6 +104,16 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: data
+      {{- if .Values.metrics.enabled }}
+      - name: redis-exporter
+        image: {{ include "redis.metricsImage" . }}
+        ports:
+        - containerPort: {{ .Values.service.metricsPort }}
+          name: exporter-port
+        volumeMounts:
+        - name: data
+          mountPath: /data
+      {{- end }}
       volumes:
       - name: config
         configMap:
