@@ -106,3 +106,29 @@ spec:
     release: redis-ha
     app: redis-sentinel
     "statefulset.kubernetes.io/pod-name": redis-sentinel-harness-server-2
+
+___
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-metrics
+  namespace: redis
+  labels:
+    app: prometheus-redis-exporter
+    name: redis-exporter-prometheus-redis-exporter
+spec:
+  ports:
+    - name: redis-exporter
+      protocol: TCP
+      port: 9121
+      targetPort: exporter-port
+  selector:
+    app: redis-sentinel
+    release: redis-ha
+  clusterIPs:
+  type: ClusterIP
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  internalTrafficPolicy: Cluster
