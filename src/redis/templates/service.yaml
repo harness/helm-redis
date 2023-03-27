@@ -117,7 +117,7 @@ spec:
   ports:
     - name: redis-exporter
       protocol: TCP
-      port: 9121
+      port: {{ .Values.service.metricsPort }}
       targetPort: exporter-port
   selector:
     app: redis-sentinel
