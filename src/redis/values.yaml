@@ -43,9 +43,9 @@ sentinel:
     pullSecrets: []
 
 metrics:
-  enabled: true
+  enabled: false
   serviceMonitor:
-    enabled: true 
+    enabled: false 
   resources: {}
   image:
     registry: docker.io
