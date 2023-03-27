@@ -3,6 +3,8 @@
 # Declare variables to be passed into your templates.
 global:
   storageClassName: ""
+  imagePullSecrets: []
+
 replicaCount: 3
 
 # -- Enable Hard pod anti-affinity during scheduling
@@ -22,6 +24,7 @@ redis:
     repository: harness/redis
     pullPolicy: IfNotPresent
     digest: ""
+    pullSecrets: []
 
 sentinel:
   resources:
@@ -37,6 +40,7 @@ sentinel:
     repository: harness/redis
     pullPolicy: IfNotPresent
     digest: ""
+    pullSecrets: []
 
 initContainers:
   config_init:
@@ -46,6 +50,7 @@ initContainers:
       repository: harness/redis
       pullPolicy: IfNotPresent
       digest: ""
+      pullSecrets: []
 
 nameOverride: ""
 fullnameOverride: ""
