@@ -101,6 +101,16 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: data
+      {{- if .Values.metrics.enabled }}
+      - name: redis-exporter
+        image: {{ include "redis.metricsImage" . }}
+        ports:
+        - containerPort: {{ .Values.service.metricsPort }}
+          name: exporter-port
+        volumeMounts:
+        - name: data
+          mountPath: /data
+      {{- end }}
       volumes:
       - name: config
         configMap:

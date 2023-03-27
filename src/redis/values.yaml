@@ -42,6 +42,18 @@ sentinel:
     digest: ""
     pullSecrets: []
 
+metrics:
+  enabled: false
+  serviceMonitor:
+    enabled: false 
+  resources: {}
+  image:
+    registry: docker.io
+    tag: latest
+    repository: oliver006/redis_exporter
+    pullPolicy: IfNotPresent
+    digest: ""
+
 initContainers:
   config_init:
     image:
@@ -92,6 +104,7 @@ service:
   type: ClusterIP
   sentinelport: 26379
   serverport: 6379
+  metricsPort: 9121
 
 nodeSelector: {}
 
