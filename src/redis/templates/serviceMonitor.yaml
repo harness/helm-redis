@@ -17,5 +17,4 @@ spec:
   selector:
     matchLabels:
       apptwo: {{ .Release.Namespace }}
-      app: prometheus-redis-exporter
 {{- end }}
