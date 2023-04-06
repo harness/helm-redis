@@ -156,5 +156,5 @@ spec:
         requests:
           storage: {{ .Values.volumeClaimTemplate.resources.requests.storage }}
       {{- if .Values.global.storageClassName }}
-      storageClassName: {{ .Values.global.storageClassName }}
+      storageClassName: {{ .Values.global.storageClass }}
       {{- end }}
