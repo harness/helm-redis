@@ -91,7 +91,7 @@ Return  the proper Storage Class
 {{ include "redis.storage.class" ( dict "global" $) }}
 */}}
 {{- define "redis.storage.class" -}}
-{{- $storageClass := "standard" -}}
+{{- $storageClass := "" -}}
 {{- if .global -}}
     {{- if .global.storageClass -}}
         {{- $storageClass = .global.storageClass -}}
